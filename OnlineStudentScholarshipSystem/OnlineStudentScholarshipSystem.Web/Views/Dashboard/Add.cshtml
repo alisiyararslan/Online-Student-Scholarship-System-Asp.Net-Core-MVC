@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add Scholarship Page</h1>
+
+@model ScholarshipViewModel
+
+<form asp-controller="Dashboard" asp-action="Add" method="post" enctype="multipart/form-data">
+    
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Name">Scholarship Name :</label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Amount">Scholarship Amount :</label>
+        <input  class="form-control" asp-for="Amount" />
+        <span class="text-danger" asp-validation-for="Amount"></span> @*error message*@
+    </div>
+
+    
+
+    <div class="form-floating mb-3 mt-3">
+        <textarea asp-for="Description"   class="form-control" placeholder="Scholarship Description: "  style="height: 100px"></textarea>
+        <label asp-for="Description">Scholarship Description:</label>
+        <span class="text-danger" asp-validation-for="Description"></span> @*error message*@
+    </div>
+
+
+    <div class="form-floating mb-3 mt-3">
+        <textarea asp-for="ApplicationCriteria" class="form-control" placeholder="Application Criteria: " style="height: 100px"></textarea>
+        <label asp-for="ApplicationCriteria">Application Criteria:</label>
+        <span class="text-danger" asp-validation-for="ApplicationCriteria"></span> @*error message*@
+    </div>
+
+    
+
+    <div class="form-group mb-3 mt-3">
+        <select class="form-select" asp-for="EducationLevel" asp-items="@ViewBag.EducationLevelSelect">
+            <option value="">Education Level : </option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="EducationLevel"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Deadline">Scholarship Deadline : </label>
+        <input type="date" class="form-control" asp-for="Deadline" />
+        <span class="text-danger" asp-validation-for="Deadline"></span> @*error message*@
+    </div>
+
+
+    <button class="btn btn-primary mb-3 mt-3" type="submit">Publish</button>
+
+</form>
+
+@section Scripts{
+    @*client tarafında validate kontrolü*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,81 @@
+﻿@inject IHttpContextAccessor contxt;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Published Scholarships </h1>
+
+@model List<ScholarshipViewModel>
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Foundation</th>
+        <th>PublishDate</th>
+        <th>Deadline</th>
+        <th>Application Criteria</th>
+        <th>Education Level</th>
+        <th></th>
+
+    </thead>
+
+    <tbody>
+
+        
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Amount</td>
+                <td>@item.Description</td>
+                <td>@item.Foundation</td>
+                <td>@item.PublishDate</td>
+                <td>@item.Deadline</td>
+                <td>@item.ApplicationCriteria</td>
+                <td>@item.EducationLevel</td>
+                <td>
+                    @if (contxt.HttpContext.Session.GetString("userType") == "student")
+                    {
+                        bool isApplied = false;
+
+                        @foreach (var item2 in ViewBag.appliedScholarships)
+                        {
+                            @if (item2.ScholarshipId == item.Id)
+                            {
+                                isApplied = true;
+                            }
+                        }
+
+                        @if (isApplied)
+                        {
+                            <p style ="color:red;">Applied</p>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" asp-controller="scholarships" asp-action="apply" asp-route-id="@item.Id">Apply</a>
+                        }
+
+
+                        
+                    }
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+

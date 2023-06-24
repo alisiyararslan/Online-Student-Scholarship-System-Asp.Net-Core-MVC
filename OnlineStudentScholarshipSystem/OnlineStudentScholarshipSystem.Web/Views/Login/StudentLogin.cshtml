@@ -1,0 +1,32 @@
+﻿
+<h1>Student Login Page</h1>
+
+
+@model StudentViewModel
+
+<form asp-controller="Login" asp-action="studentLogin" method="post" enctype="multipart/form-data">
+
+    <div class="form-group mb-3">
+        <label asp-for="Email">Email : </label>
+        <input type="text" class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group mb-3 mt-3" >
+        <label asp-for="Password">Password :</label>
+        <input type="password" class="form-control" asp-for="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span> @*error message*@
+    </div>
+
+    <button class="btn btn-primary" type="submit" style="margin-bottom:300px">Login</button>
+
+</form>
+
+
+@section Scripts{
+
+
+    @*client-side validation*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,46 @@
+﻿
+
+<h1> Applicants for the @ViewBag.ScholarshipName Scholarship</h1>
+
+@model List<StudentViewModel>
+
+
+
+    @foreach (var item in Model)
+    {
+    <br />
+    <div class="card">
+        <h5 class="card-header">First Name: @item.FirstName <br /> Second Name: @item.SecondName</h5>
+        <div class="card-body">
+            <p class="card-title">Email: @item.Email</p>
+            <p class="card-title">Is Disabled: @(item.IsDisabled ? "Yes" : "No")</p>
+            <p class="card-title">Gender: @(item.Gender ? "Female" : "Male")</p>
+            <p class="card-title">Is Disciplined: @(item.IsDisciplined ? "Yes" : "No")</p>
+            <p class="card-title">Education Level: @item.EducationLevel</p>
+            <p class="card-title">Have Vehicle License: @(item.HaveVehicleLicense ? "Yes" : "No")</p>
+            <p class="card-title">Grade Average: @item.GradeAverage</p>
+            <p class="card-title">Address: @item.Address</p>
+            <p class="card-title">Is Mother Alive: @(item.IsMotherAlive ? "Yes" : "No")</p>
+            @if (@item.MotherName!=null)
+            {
+                <p class="card-title">Mother Name: @item.MotherName</p>
+            }
+            
+            <p class="card-title">Is Father Alive: @(item.IsFatherAlive ? "Yes" : "No")</p>
+            @if (@item.FatherName != null)
+            {
+                <p class="card-title">Father Name: @item.FatherName</p>
+            }
+            
+            <p class="card-title">Siblings Count: @item.SiblingsCount</p>
+            <p class="card-title">Total Family Income: @item.TotalFamilyIncome</p>
+            <p class="card-title">Identification Number: @item.IdentificationNumber</p>
+            <p class="card-title">Birth Date: @item.BirthDate</p>
+        </div>
+    </div>
+    
+    <br />
+    <br />
+    }
+
+    

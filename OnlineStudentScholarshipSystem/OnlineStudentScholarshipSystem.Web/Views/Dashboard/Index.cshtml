@@ -1,0 +1,71 @@
+﻿@inject IHttpContextAccessor contxt;
+<h1>Dashboard Page</h1>
+
+@model List<ScholarshipViewModel>
+
+<h4>User Email: @contxt.HttpContext.Session.GetString("email")</h4>
+
+@if (contxt.HttpContext.Session.GetString("userType") == "student")
+{
+    <h3>Applied Scholarships </h3>
+}
+else{
+
+    <a class="btn btn-primary" asp-controller="dashboard" asp-action="add">Add Scholarship</a>
+    <br />
+    <br />
+    <br />
+    <br />
+    <h3>Published Scholarships </h3>
+}
+
+
+
+
+
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Application Criteria</th>
+    <th>Foundation</th>
+    <th>PublishDate</th>
+    <th>Deadline</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Amount</td>
+                <td>@item.ApplicationCriteria</td>
+                <td>@item.Foundation</td>
+                <td>@item.PublishDate</td>
+                <td>@item.Deadline</td>
+                @if (contxt.HttpContext.Session.GetString("userType") == "student") 
+                {
+                    <td><a class="btn btn-danger" asp-controller="dashboard" asp-action="withdrawApplication" asp-route-id="@item.Id">Withdraw Application</a></td>
+                }
+                else
+                {
+                    <td><a class="btn btn-primary" asp-controller="dashboard" asp-action="update" asp-route-id="@item.Id">Update</a></td>
+                    <td><a class="btn btn-danger" asp-controller="dashboard" asp-action="remove" asp-route-id="@item.Id">Delete</a></td>
+                    <td><a class="btn btn-secondary" asp-controller="dashboard" asp-action="applicants" asp-route-id="@item.Id">Applicants</a></td>
+                }
+                
+                
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>

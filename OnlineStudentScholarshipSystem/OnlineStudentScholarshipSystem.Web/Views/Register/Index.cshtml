@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Register Page</h1>
+
+<form asp-controller="Register" asp-action="studentRegister" method="post">
+
+    <button class="btn btn-primary mb-3 mt-3" type="submit">I'm a student.</button>
+</form>
+
+<form asp-controller="Register" asp-action="officerRegister" method="post" style="margin-bottom:400px">
+
+    <button class="btn btn-primary mb-3 mt-3" type="submit">I'm an officer.</button>
+</form>
+

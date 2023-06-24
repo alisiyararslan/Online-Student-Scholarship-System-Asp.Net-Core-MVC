@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "officerRegister";
+}
+
+<h1>Officer Register Page</h1>
+
+@model OfficerViewModel
+<form asp-controller="Register" asp-action="officerRegister" method="post" enctype="multipart/form-data">
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="FirstName">First Name :</label>
+        <input class="form-control" asp-for="FirstName" />
+        <span class="text-danger" asp-validation-for="FirstName"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="SecondName">Second Name :</label>
+        <input class="form-control" asp-for="SecondName" />
+        <span class="text-danger" asp-validation-for="SecondName"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Email">Email : </label>
+
+        <input type="text" class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Nationality">Nationality : </label>
+
+        <input class="form-control" asp-for="Nationality" />
+        <span class="text-danger" asp-validation-for="Nationality"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="IdentificationNumber">Identification Number : </label>
+
+        <input class="form-control" asp-for="IdentificationNumber" />
+        <span class="text-danger" asp-validation-for="IdentificationNumber"></span>
+    </div>
+
+    <div class="form-group mb-9">
+        <label asp-for="BirthDate">Birth Date : </label>
+
+        <input type ="date" class="form-control" asp-for="BirthDate" />
+        <span class="text-danger" asp-validation-for="BirthDate"></span>
+    </div>
+
+
+    
+
+    <div class="form-group mb-3">
+        <label asp-for="CompanyName">Company Name : </label>
+
+        <input class="form-control" asp-for="CompanyName" />
+        <span class="text-danger" asp-validation-for="CompanyName"></span>
+    </div>
+ 
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Password">Password :</label>
+        <input type="password" class="form-control" asp-for="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span> @*error message*@
+    </div>
+
+
+
+    <button class="btn btn-primary" type="submit">Register</button>
+
+</form>
+
+
+@section Scripts{
+
+
+    @*client-side validation*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

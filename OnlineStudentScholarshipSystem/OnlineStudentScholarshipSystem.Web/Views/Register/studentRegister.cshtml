@@ -1,0 +1,273 @@
+﻿
+@{
+    ViewData["Title"] = "studentRegister";
+}
+
+<h1>Student Register Page </h1>
+
+@model StudentViewModel
+<form asp-controller="Register" asp-action="studentRegister" method="post" enctype="multipart/form-data">
+    
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="FirstName">First Name :</label>
+        <input class="form-control" asp-for="FirstName" />
+        <span class="text-danger" asp-validation-for="FirstName"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="SecondName">Second Name :</label>
+        <input class="form-control" asp-for="SecondName" />
+        <span class="text-danger" asp-validation-for="SecondName"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Email">Email : </label>
+        
+        <input type="text" class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Nationality">Nationality : </label>
+        
+        <input  class="form-control" asp-for="Nationality" />
+        <span class="text-danger" asp-validation-for="Nationality"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="IdentificationNumber">Identification Number : </label>
+
+        <input class="form-control" asp-for="IdentificationNumber" />
+        <span class="text-danger" asp-validation-for="IdentificationNumber"></span>
+    </div>
+
+    <div class="form-group mb-9">
+        <label asp-for="BirthDate">Birth Date : </label>
+
+        <input type="date" class="form-control" asp-for="BirthDate" />
+        <span class="text-danger" asp-validation-for="BirthDate"></span>
+    </div>
+
+
+
+    <div class="form-group mb-3 mt-3">
+        <select class="form-select" asp-for="EducationLevel" asp-items="@ViewBag.EducationLevelSelectStudent">
+            <option value="">Education Level : </option>
+
+        </select>
+        <span class="text-danger" asp-validation-for="EducationLevel"></span> 
+    </div>
+
+
+
+    <div class="mb-3 mt-3">
+        <span>Are You Disabled?</span>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="YesDisabled" asp-for="IsDisabled" value="True">
+            <label class="form-check-label" for="Yes">
+                Yes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="NoDisabled" asp-for="IsDisabled" value="False">
+            <label class="form-check-label" for="No">
+                No
+            </label>
+        </div>
+
+        <span class="text-danger" asp-validation-for="IsDisabled"></span> @*hata mesajı*@
+    </div>
+
+    <div class="mb-3 mt-3">
+        <span>Gender:</span>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="FemaleGender" asp-for="Gender" value="True">
+            <label class="form-check-label" for="Female">
+                Female
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="MaleGender" asp-for="Gender" value="False">
+            <label class="form-check-label" for="Male">
+                Male
+            </label>
+        </div>
+        
+        <span class="text-danger" asp-validation-for="Gender"></span> @*hata mesajı*@
+    </div>
+
+    <div class="mb-3 mt-3">
+        <span>Have you ever been disciplined in your school life?</span>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="YesIsDisciplined" asp-for="IsDisciplined" value="True">
+            <label class="form-check-label" for="Yes">
+                Yes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="NoIsDisciplined" asp-for="IsDisciplined" value="False">
+            <label class="form-check-label" for="No">
+                No
+            </label>
+        </div>
+
+        <span class="text-danger" asp-validation-for="IsDisciplined"></span> @*hata mesajı*@
+    </div>
+
+    <div class="mb-3 mt-3">
+        <span>Do you have a vehicle license?</span>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="YesLicense" asp-for="HaveVehicleLicense" value="True">
+            <label class="form-check-label" for="Yes">
+                Yes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="NoLicense" asp-for="HaveVehicleLicense" value="False">
+            <label class="form-check-label" for="No">
+                No
+            </label>
+        </div>
+
+        <span class="text-danger" asp-validation-for="HaveVehicleLicense"></span> @*hata mesajı*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Address">Address :</label>
+        <input class="form-control" asp-for="Address" />
+        <span class="text-danger" asp-validation-for="Address"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="GradeAverage">Your school grade point average :</label>
+        <input class="form-control" asp-for="GradeAverage" />
+        <span class="text-danger" asp-validation-for="GradeAverage"></span> @*error message*@
+    </div>
+
+    <div class="mb-3 mt-3">
+        <span>Is Your Mother Alive?</span>
+
+        <div class="form-check">
+            <input class="form-check-input"  name="mother" type="radio" id="YesMother" asp-for="IsMotherAlive" value="True" >
+            <label class="form-check-label" for="Yes">
+                Yes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" name="mother" type="radio" id="NoMother" asp-for="IsMotherAlive" value="False">
+            <label class="form-check-label" for="No">
+                No
+            </label>
+        </div>
+
+        <span class="text-danger" asp-validation-for="IsMotherAlive"></span> @*hata mesajı*@
+    </div>
+
+    <div id="mother_additional_question" class="form-group mb-3 mt-3" style="display: none;">
+        <label asp-for="MotherName">Your Mother Name :</label>
+        <input class="form-control" asp-for="MotherName" />
+        <span class="text-danger" asp-validation-for="MotherName"></span> @*error message*@
+    </div>
+
+
+    <div class="mb-3 mt-3">
+        <span>Is Your Father Alive?</span>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="father" id="YesFather" asp-for="IsFatherAlive" value="True">
+            <label class="form-check-label" for="Yes">
+                Yes
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="father" id="NoFather" asp-for="IsFatherAlive" value="False">
+            <label class="form-check-label" for="No">
+                No
+            </label>
+        </div>
+
+        <span class="text-danger" asp-validation-for="IsFatherAlive"></span> @*hata mesajı*@
+    </div>
+
+    <div id="father_additional_question" class="form-group mb-3 mt-3" style="display: none;">
+        <label asp-for="FatherName">Your Father Name :</label>
+        <input class="form-control" asp-for="FatherName" />
+        <span class="text-danger" asp-validation-for="FatherName"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="SiblingsCount">How many siblings do you have?</label>
+        <input class="form-control" asp-for="SiblingsCount" />
+        <span class="text-danger" asp-validation-for="SiblingsCount"></span> @*error message*@
+    </div>
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="TotalFamilyIncome">What is the total income of the family?</label>
+        <input class="form-control" asp-for="TotalFamilyIncome" />
+        <span class="text-danger" asp-validation-for="TotalFamilyIncome"></span> @*error message*@
+    </div>
+
+
+    <div class="form-group mb-3 mt-3">
+        <label asp-for="Password">Password :</label>
+        <input type="password" class="form-control" asp-for="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span> @*error message*@
+    </div>
+
+    
+
+    <button class="btn btn-primary" type="submit" >Register</button>
+    
+</form>
+
+
+@section Scripts{
+
+    <script>
+
+        const boxMother = document.getElementById('mother_additional_question');
+
+        function handleRadioClickMother() {
+            if (document.getElementById('YesMother').checked) {
+                boxMother.style.display = 'block';
+            } else {
+                boxMother.style.display = 'none';
+            }
+        }
+
+        const radioButtonsMother = document.querySelectorAll('input[name="mother"]');
+        radioButtonsMother.forEach(radio => {
+            radio.addEventListener('click', handleRadioClickMother);
+        });
+
+        const boxFather = document.getElementById('father_additional_question');
+
+        function handleRadioClickFather() {
+            if (document.getElementById('YesFather').checked) {
+                boxFather.style.display = 'block';
+            } else {
+                boxFather.style.display = 'none';
+            }
+        }
+
+        const radioButtonsFather = document.querySelectorAll('input[name="father"]');
+        radioButtonsFather.forEach(radio => {
+            radio.addEventListener('click', handleRadioClickFather);
+        });
+    </script>
+    
+
+    @*client-side validation*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
